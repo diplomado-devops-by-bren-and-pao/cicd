@@ -28,6 +28,7 @@ jobs:
         with:
           context: ./github/db
           push: false
+          load: true
           tags: ${{ env.DOCKERHUB_USERNAME }}/database:${{ github.sha }}
 
       - name: Build backend
@@ -35,6 +36,7 @@ jobs:
         with:
           context: ./github/backend
           push: false
+          load: true
           tags: ${{ env.DOCKERHUB_USERNAME }}/backend:${{ github.sha }}
       
       - name: Build frontend
@@ -42,6 +44,7 @@ jobs:
         with:
           context: ./github/frontend
           push: false
+          load: true
           tags: ${{ env.DOCKERHUB_USERNAME }}/frontend:${{ github.sha }}
 
   test:
