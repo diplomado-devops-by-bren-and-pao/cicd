@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+set -e
+
+# ============================================
+# DATOS A COMPLETAR:
+# ============================================
+
+GITHUB_REPOSITORY_URL="https://github.com/ORGANIZACION/REPOSITORIO"
+GITHUB_RUNNER_TOKEN="TOKEN_GENERADO_EN_GITHUB"
+
+RUNNER_NAME="vagrant-runner"
+RUNNER_LABELS="self-hosted,linux,x64,vagrant"
+RUNNER_DIR="/opt/actions-runner"
+
+# ============================================
+# REGISTRO DEL RUNNER
+# ============================================
+
+echo "Registrando runner en GitHub..."
+
+cd "$RUNNER_DIR"
+
+sudo -u github-runner ./config.sh \
+  --url "$GITHUB_REPOSITORY_URL" \
+  --token "$GITHUB_RUNNER_TOKEN" \
+  --name "$RUNNER_NAME" \
+  --labels "$RUNNER_LABELS" \
+  --unattended
+
+echo "Instalando runner como servicio..."
+
+./svc.sh install github-runner
+./svc.sh start
+
+echo "GitHub Actions Runner registrado correctamente."
