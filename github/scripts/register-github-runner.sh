@@ -29,7 +29,7 @@ sudo -u github-runner ./config.sh \
 
 echo "Instalando runner como servicio..."
 
-./svc.sh install github-runner
-./svc.sh start
+sudo ./svc.sh install github-runner
+sudo ./svc.sh start
 
 echo "GitHub Actions Runner registrado correctamente."

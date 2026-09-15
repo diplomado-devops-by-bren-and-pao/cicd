@@ -18,6 +18,7 @@ jobs:
   build:
     name: Build
     runs-on: [self-hosted]
+    needs: code
     steps:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
