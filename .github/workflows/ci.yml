@@ -26,21 +26,21 @@ jobs:
       - name: Build database
         uses: docker/build-push-action@v6
         with:
-          context: ./db
+          context: ./github/db
           push: false
           tags: ${{ env.DOCKERHUB_USERNAME }}/database:${{ github.sha }}
 
       - name: Build backend
         uses: docker/build-push-action@v6
         with:
-          context: ./backend
+          context: ./github/backend
           push: false
           tags: ${{ env.DOCKERHUB_USERNAME }}/backend:${{ github.sha }}
       
       - name: Build frontend
         uses: docker/build-push-action@v6
         with:
-          context: ./frontend
+          context: ./github/frontend
           push: false
           tags: ${{ env.DOCKERHUB_USERNAME }}/frontend:${{ github.sha }}
 
