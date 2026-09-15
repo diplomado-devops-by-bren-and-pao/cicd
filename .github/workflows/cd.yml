@@ -1,9 +1,7 @@
 name: Continuous Deployment
 
 on:
-  workflow_run:
-    workflows: ["Continuous Integration"]
-    types: [completed]
+  push:
 
 env:
   DOCKERHUB_USERNAME: brendisas
@@ -35,8 +33,7 @@ jobs:
 
       - name: Create Docker network
         run: |
-          docker network inspect saludos-network >/dev/null 2>&1 || \
-          docker network create saludos-network
+          docker network inspect saludos-network >/dev/null 2>&1 || docker network create saludos-network
 
       - name: Deploy database
         run: |
@@ -54,20 +51,13 @@ jobs:
         run: |
           docker rm -f backend 2>/dev/null || true
 
-          docker run -d \
-            --name backend \
-            --network saludos-network \
-            ${{ env.DOCKERHUB_USERNAME }}/backend:latest
+          docker run -d --name backend --network saludos-network ${{ env.DOCKERHUB_USERNAME }}/backend:latest
 
       - name: Deploy frontend
         run: |
           docker rm -f frontend 2>/dev/null || true
 
-          docker run -d \
-            --name frontend \
-            --network saludos-network \
-            -p 80:80 \
-            ${{ env.DOCKERHUB_USERNAME }}/frontend:latest
+          docker run -d --name frontend --network saludos-network -p 8080:80 ${{ env.DOCKERHUB_USERNAME }}/frontend:latest
 
 
   test:
@@ -78,4 +68,4 @@ jobs:
     steps:
 
       - name: Test localhost
-        run: curl -f http://localhost:80
+        run: curl -f http://localhost:8080
