@@ -3,6 +3,10 @@ name: Continuous Deployment
 on:
   push:
 
+  workflow_run:
+    workflows: ["Continuous Integration"]
+    types: [completed]
+
 env:
   DOCKERHUB_USERNAME: brendisas
 
