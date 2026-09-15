@@ -1,0 +1,81 @@
+name: Continuous Deployment
+
+on:
+  workflow_run:
+    workflows: ["Continuous Integration"]
+    types: [completed]
+
+env:
+  DOCKERHUB_USERNAME: brendisas
+
+jobs:
+
+  pull:
+    name: Pull
+    runs-on: [self-hosted]
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+
+    steps:
+      - name: Pull database
+        run: docker pull ${{ env.DOCKERHUB_USERNAME }}/database:latest
+
+      - name: Pull backend
+        run: docker pull ${{ env.DOCKERHUB_USERNAME }}/backend:latest
+
+      - name: Pull frontend
+        run: docker pull ${{ env.DOCKERHUB_USERNAME }}/frontend:latest
+
+
+  deploy:
+    name: Deploy
+    runs-on: [self-hosted]
+    needs: pull
+
+    steps:
+
+      - name: Create Docker network
+        run: |
+          docker network inspect saludos-network >/dev/null 2>&1 || \
+          docker network create saludos-network
+
+      - name: Deploy database
+        run: |
+          docker rm -f database 2>/dev/null || true
+
+          docker run -d \
+            --name database \
+            --network saludos-network \
+            -e POSTGRES_DB=saludos_db \
+            -e POSTGRES_USER=saludos_user \
+            -e POSTGRES_PASSWORD=saludos_password \
+            ${{ env.DOCKERHUB_USERNAME }}/database:latest
+
+      - name: Deploy backend
+        run: |
+          docker rm -f backend 2>/dev/null || true
+
+          docker run -d \
+            --name backend \
+            --network saludos-network \
+            ${{ env.DOCKERHUB_USERNAME }}/backend:latest
+
+      - name: Deploy frontend
+        run: |
+          docker rm -f frontend 2>/dev/null || true
+
+          docker run -d \
+            --name frontend \
+            --network saludos-network \
+            -p 80:80 \
+            ${{ env.DOCKERHUB_USERNAME }}/frontend:latest
+
+
+  test:
+    name: Test
+    runs-on: [self-hosted]
+    needs: deploy
+
+    steps:
+
+      - name: Test localhost
+        run: curl -f http://localhost:80
