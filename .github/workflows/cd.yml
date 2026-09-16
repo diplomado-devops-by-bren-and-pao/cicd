@@ -47,7 +47,7 @@ jobs:
           docker run -d \
             --name database \
             --network saludos-network \
-            -p 5432:5432
+            -p 5432:5432 \
             -e POSTGRES_DB=saludos_db \
             -e POSTGRES_USER=saludos_user \
             -e POSTGRES_PASSWORD=saludos_password \
