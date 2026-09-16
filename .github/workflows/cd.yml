@@ -1,8 +1,6 @@
 name: Continuous Deployment
 
 on:
-  push:
-
   workflow_run:
     workflows: ["Continuous Integration"]
     types: [completed]
@@ -51,11 +49,15 @@ jobs:
             -e POSTGRES_PASSWORD=saludos_password \
             ${{ env.DOCKERHUB_USERNAME }}/database:latest
 
+          sleep 10
+
       - name: Deploy backend
         run: |
           docker rm -f backend 2>/dev/null || true
 
           docker run -d --name backend --network saludos-network ${{ env.DOCKERHUB_USERNAME }}/backend:latest
+
+          sleep 10
 
       - name: Deploy frontend
         run: |

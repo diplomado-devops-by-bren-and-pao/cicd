@@ -5,8 +5,8 @@ set -e
 # DATOS A COMPLETAR:
 # ============================================
 
-GITHUB_REPOSITORY_URL="https://github.com/ORGANIZACION/REPOSITORIO"
-GITHUB_RUNNER_TOKEN="TOKEN_GENERADO_EN_GITHUB"
+GITHUB_REPOSITORY_URL="https://github.com/diplomado-devops-by-bren-and-pao/cicd"
+GITHUB_RUNNER_TOKEN="AJ3N7TESYVVXKWPGAPSZS3LKVHU66"
 
 RUNNER_NAME="vagrant-runner"
 RUNNER_LABELS="self-hosted,linux,x64,vagrant"
