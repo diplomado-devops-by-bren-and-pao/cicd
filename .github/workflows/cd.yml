@@ -1,9 +1,12 @@
 name: Continuous Deployment
 
 on:
-  workflow_run:
-    workflows: ["Continuous Integration"]
-    types: [completed]
+  push:
+  # workflow_run:
+  #   workflows: ["Continuous Integration"]
+  #   types: [completed]
+  
+  # workflow_dispatch:
 
 env:
   DOCKERHUB_USERNAME: brendisas
