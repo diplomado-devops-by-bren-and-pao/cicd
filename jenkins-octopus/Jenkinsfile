@@ -19,9 +19,9 @@ pipeline {
             steps {
                 echo 'Construyendo imágenes con Docker Compose...'
 
-                sh '''
-                    docker compose build .
-                '''
+                dir ('jenkins-octopus') {
+                    sh 'docker compose build'
+                }
             }
         }
 
