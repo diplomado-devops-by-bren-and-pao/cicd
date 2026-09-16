@@ -5,10 +5,10 @@ set -e
 # DATOS A COMPLETAR
 # ============================================
 
-OCTOPUS_SERVER_URL="https://TU-INSTANCIA.octopus.app"
-OCTOPUS_API_KEY="API-XXXXXXXXXXXXXXXXXXXXXXXX"
+OCTOPUS_SERVER_URL="https://diplomado-devops.octopus.app/"
+OCTOPUS_API_KEY="API-4MSIVFMYZ1F7HIPAKTUIZGHMC7HT7MDW"
 OCTOPUS_SPACE="Default"
-OCTOPUS_ENVIRONMENT="Development"
+OCTOPUS_ENVIRONMENT="prod"
 
 TARGET_NAME="vagrant-deployment-target"
 TARGET_ROLE="docker-host"

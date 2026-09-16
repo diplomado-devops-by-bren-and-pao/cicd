@@ -9,7 +9,7 @@ apt-get install -y \
   curl \
   ca-certificates \
   fontconfig \
-  openjdk-17-jre
+  openjdk-21-jre
 
 echo "Configurando repositorio de Jenkins..."
 

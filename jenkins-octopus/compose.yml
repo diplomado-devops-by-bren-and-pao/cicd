@@ -1,5 +1,7 @@
 services:
   frontend:
+    build:
+      context: ./frontend
     image: saludos-frontend:2.0
     ports:
     - "8082:80"
@@ -10,6 +12,8 @@ services:
 
   backend:
     image: saludos-backend:6.0
+    build:
+      context: ./backend
     environment:
       DB_HOST: ${DB_HOST}
       DB_PORT: ${DB_PORT}
@@ -23,13 +27,15 @@ services:
 
 
   database:
+    build:
+        context: ./db
     image: saludos-db:2.0
     environment:
       POSTGRES_DB: ${POSTGRES_DB}
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
-    - postgres_data:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql/data
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
       interval: 5s

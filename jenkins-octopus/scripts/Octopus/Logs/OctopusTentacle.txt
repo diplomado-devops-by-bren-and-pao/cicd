@@ -1,0 +1,121 @@
+2026-09-16 04:52:45.3656   9586      1  INFO  Tentacle version 11.0.4424 (11.0.4424) instance Default
+2026-09-16 04:52:45.3911   9586      1  INFO  Environment Information:
+  OperatingSystem: Ubuntu 22.04.5 LTS
+  OsBitVersion: x64
+  Is64BitProcess: True
+  CurrentUser: root
+  MachineName: jenkins-and-octopus-dt
+  ProcessorCount: 2
+  CurrentDirectory: /vagrant/scripts
+  TempDirectory: /tmp/
+  HostProcessName: Tentacle
+  PID: 9586
+2026-09-16 04:52:45.5900   9586      1  INFO  ==== CreateInstanceCommand ====
+2026-09-16 04:52:45.5929   9586      1  INFO  CommandLine: /opt/octopus/tentacle/Tentacle.dll create-instance --config /etc/octopus/default/tentacle-default.config
+2026-09-16 04:52:45.5960   9586      1  INFO  Creating empty configuration file: /etc/octopus/default/tentacle-default.config
+2026-09-16 04:52:45.7039   9586      1  INFO  Saving instance: Tentacle
+2026-09-16 04:52:45.7079   9586      1  INFO  Setting home directory to: /etc/octopus/default
+2026-09-16 04:52:46.3346   9600      1  INFO  Tentacle version 11.0.4424 (11.0.4424) instance Default
+2026-09-16 04:52:46.3596   9600      1  INFO  Environment Information:
+  OperatingSystem: Ubuntu 22.04.5 LTS
+  OsBitVersion: x64
+  Is64BitProcess: True
+  CurrentUser: root
+  MachineName: jenkins-and-octopus-dt
+  ProcessorCount: 2
+  CurrentDirectory: /vagrant/scripts
+  TempDirectory: /tmp/
+  HostProcessName: Tentacle
+  PID: 9600
+2026-09-16 04:52:46.7309   9600      1  INFO  Changing log folder from Octopus/Logs to /etc/octopus/default/Logs
+2026-09-16 04:52:48.5665   9615      1  INFO  Tentacle version 11.0.4424 (11.0.4424) instance Default
+2026-09-16 04:52:48.5924   9615      1  INFO  Environment Information:
+  OperatingSystem: Ubuntu 22.04.5 LTS
+  OsBitVersion: x64
+  Is64BitProcess: True
+  CurrentUser: root
+  MachineName: jenkins-and-octopus-dt
+  ProcessorCount: 2
+  CurrentDirectory: /vagrant/scripts
+  TempDirectory: /tmp/
+  HostProcessName: Tentacle
+  PID: 9615
+2026-09-16 04:52:48.9005   9615      1  INFO  Changing log folder from Octopus/Logs to /etc/octopus/default/Logs
+2026-09-16 04:52:49.5874   9630      1  INFO  Tentacle version 11.0.4424 (11.0.4424) instance Default
+2026-09-16 04:52:49.6143   9630      1  INFO  Environment Information:
+  OperatingSystem: Ubuntu 22.04.5 LTS
+  OsBitVersion: x64
+  Is64BitProcess: True
+  CurrentUser: root
+  MachineName: jenkins-and-octopus-dt
+  ProcessorCount: 2
+  CurrentDirectory: /vagrant/scripts
+  TempDirectory: /tmp/
+  HostProcessName: Tentacle
+  PID: 9630
+2026-09-16 04:52:49.9189   9630      1  INFO  Changing log folder from Octopus/Logs to /etc/octopus/default/Logs
+2026-09-16 04:54:02.3929   9659      1  INFO  Tentacle version 11.0.4424 (11.0.4424) instance Default
+2026-09-16 04:54:02.4160   9659      1  INFO  Environment Information:
+  OperatingSystem: Ubuntu 22.04.5 LTS
+  OsBitVersion: x64
+  Is64BitProcess: True
+  CurrentUser: root
+  MachineName: jenkins-and-octopus-dt
+  ProcessorCount: 2
+  CurrentDirectory: /vagrant/scripts
+  TempDirectory: /tmp/
+  HostProcessName: Tentacle
+  PID: 9659
+2026-09-16 04:54:02.6129   9659      1  INFO  Changing log folder from Octopus/Logs to /etc/octopus/default/Logs
+2026-09-16 04:54:03.3866   9674      1  INFO  Tentacle version 11.0.4424 (11.0.4424) instance Default
+2026-09-16 04:54:03.4121   9674      1  INFO  Environment Information:
+  OperatingSystem: Ubuntu 22.04.5 LTS
+  OsBitVersion: x64
+  Is64BitProcess: True
+  CurrentUser: root
+  MachineName: jenkins-and-octopus-dt
+  ProcessorCount: 2
+  CurrentDirectory: /vagrant/scripts
+  TempDirectory: /tmp/
+  HostProcessName: Tentacle
+  PID: 9674
+2026-09-16 04:54:03.7222   9674      1  INFO  Changing log folder from Octopus/Logs to /etc/octopus/default/Logs
+2026-09-16 04:54:04.4697   9689      1  INFO  Tentacle version 11.0.4424 (11.0.4424) instance Default
+2026-09-16 04:54:04.4961   9689      1  INFO  Environment Information:
+  OperatingSystem: Ubuntu 22.04.5 LTS
+  OsBitVersion: x64
+  Is64BitProcess: True
+  CurrentUser: root
+  MachineName: jenkins-and-octopus-dt
+  ProcessorCount: 2
+  CurrentDirectory: /vagrant/scripts
+  TempDirectory: /tmp/
+  HostProcessName: Tentacle
+  PID: 9689
+2026-09-16 04:54:04.8072   9689      1  INFO  Changing log folder from Octopus/Logs to /etc/octopus/default/Logs
+2026-09-16 04:54:05.4873   9704      1  INFO  Tentacle version 11.0.4424 (11.0.4424) instance Default
+2026-09-16 04:54:05.5131   9704      1  INFO  Environment Information:
+  OperatingSystem: Ubuntu 22.04.5 LTS
+  OsBitVersion: x64
+  Is64BitProcess: True
+  CurrentUser: root
+  MachineName: jenkins-and-octopus-dt
+  ProcessorCount: 2
+  CurrentDirectory: /vagrant/scripts
+  TempDirectory: /tmp/
+  HostProcessName: Tentacle
+  PID: 9704
+2026-09-16 04:54:05.8162   9704      1  INFO  Changing log folder from Octopus/Logs to /etc/octopus/default/Logs
+2026-09-16 04:54:12.9228   9724      1  INFO  Tentacle version 11.0.4424 (11.0.4424) instance Default
+2026-09-16 04:54:12.9489   9724      1  INFO  Environment Information:
+  OperatingSystem: Ubuntu 22.04.5 LTS
+  OsBitVersion: x64
+  Is64BitProcess: True
+  CurrentUser: root
+  MachineName: jenkins-and-octopus-dt
+  ProcessorCount: 2
+  CurrentDirectory: /vagrant/scripts
+  TempDirectory: /tmp/
+  HostProcessName: Tentacle
+  PID: 9724
+2026-09-16 04:54:13.2524   9724      1  INFO  Changing log folder from Octopus/Logs to /etc/octopus/default/Logs

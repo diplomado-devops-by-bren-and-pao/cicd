@@ -1,0 +1,98 @@
+pipeline {
+    agent any
+
+    environment {
+        DOCKERHUB_USERNAME = 'brendisas'
+        DOCKERHUB_CREDENTIALS = 'dockerhub-credentials'
+    }
+
+    stages {
+
+        stage('Code') {
+            steps {
+                echo 'Obteniendo código del repositorio...'
+                checkout scm
+            }
+        }
+
+        stage('Build') {
+            steps {
+                echo 'Construyendo imágenes con Docker Compose...'
+
+                sh '''
+                    docker compose build
+                '''
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo 'Validando imágenes construidas...'
+
+                sh '''
+                    docker image inspect saludos-db:2.0
+                    docker image inspect saludos-backend:6.0
+                    docker image inspect saludos-frontend:2.0
+                '''
+            }
+        }
+
+        stage('Release') {
+            steps {
+                script {
+                    env.IMAGE_TAG = sh(
+                        script: "date +'%Y%m%d'-${BUILD_NUMBER}",
+                        returnStdout: true
+                    ).trim()
+                }
+
+                echo "Generando release ${IMAGE_TAG}"
+
+                sh '''
+                    docker tag saludos-db:2.0 \
+                        ${DOCKERHUB_USERNAME}/database:${IMAGE_TAG}
+
+                    docker tag saludos-backend:6.0 \
+                        ${DOCKERHUB_USERNAME}/backend:${IMAGE_TAG}
+
+                    docker tag saludos-frontend:2.0 \
+                        ${DOCKERHUB_USERNAME}/frontend:${IMAGE_TAG}
+                '''
+            }
+        }
+
+        stage('Push') {
+            steps {
+                echo 'Publicando imágenes en Docker Hub...'
+
+                withCredentials([
+                    usernamePassword(
+                        credentialsId: "${DOCKERHUB_CREDENTIALS}",
+                        usernameVariable: 'DOCKER_USER',
+                        passwordVariable: 'DOCKER_PASSWORD'
+                    )
+                ]) {
+
+                    sh '''
+                        echo "$DOCKER_PASSWORD" | \
+                        docker login -u "$DOCKER_USER" --password-stdin
+
+                        docker push ${DOCKERHUB_USERNAME}/database:${IMAGE_TAG}
+                        docker push ${DOCKERHUB_USERNAME}/backend:${IMAGE_TAG}
+                        docker push ${DOCKERHUB_USERNAME}/frontend:${IMAGE_TAG}
+                    '''
+                }
+            }
+        }
+    }
+
+    post {
+        success {
+            echo "CI completado. Release generado: ${IMAGE_TAG}"
+        }
+
+        failure {
+            echo 'El pipeline CI falló.'
+        }
+    }
+}
