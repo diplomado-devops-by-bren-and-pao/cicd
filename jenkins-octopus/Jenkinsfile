@@ -20,7 +20,7 @@ pipeline {
                 echo 'Construyendo imágenes con Docker Compose...'
 
                 sh '''
-                    docker compose build
+                    docker compose build .
                 '''
             }
         }
