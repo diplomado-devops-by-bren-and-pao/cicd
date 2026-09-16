@@ -1,0 +1,35 @@
+pipeline {
+    agent any
+
+    environment {
+    }
+
+    stages {
+
+        stage('Code') {
+            steps {
+                echo 'Obteniendo código del repositorio...'
+                checkout scm
+            }
+        }
+
+        stage('Build') {
+            steps {
+                
+            }
+        }
+
+        stage('Test') {
+            
+        }
+
+    post {
+        success {
+            echo "CI completado. Release generado: ${IMAGE_TAG}"
+        }
+
+        failure {
+            echo 'El pipeline CI falló.'
+        }
+    }
+}
