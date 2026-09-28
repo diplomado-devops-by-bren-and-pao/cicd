@@ -57,11 +57,18 @@ jobs:
     steps:
       - name: Run backend tests with coverage
         run: |
-            docker run --rm -v "$PWD/github/backend:/app" -w /app -e PYTHONPATH=/app python:3.12-slim \
-            sh -c "
-              pip install -r requirements.txt &&
-              pytest --cov=. --cov-report=xml
-            "
+          RUNNER_UID=$(id -u)
+          RUNNER_GID=$(id -g)
+
+          docker run --rm -v "$PWD/github/backend:/app" -w /app -e PYTHONPATH=/app -e RUNNER_UID="$RUNNER_UID" -e RUNNER_GID="$RUNNER_GID" \
+          python:3.12-slim \
+          sh -c "
+            pip install -r requirements.txt &&
+            pytest -p no:cacheprovider --cov=. --cov-report=term-missing --cov-report=xml
+            TEST_EXIT=\$?;
+            chown -R \$RUNNER_UID:\$RUNNER_GID /app;
+            exit \$TEST_EXIT
+          "
 
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v6
