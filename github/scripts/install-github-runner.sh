@@ -8,7 +8,8 @@ apt-get install -y \
   git \
   curl \
   jq \
-  ca-certificates
+  ca-certificates \
+  unzip
 
 echo "Creando usuario github-runner..."
 

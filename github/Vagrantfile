@@ -6,14 +6,22 @@ Vagrant.configure("2") do |config|
     guest: 8080,
     host: 8080
 
+  config.vm.network "forwarded_port",
+    guest: 9000,
+    host: 9000
+
   config.vm.provider "virtualbox" do |vb|
     vb.name = "github-runner"
-    vb.memory = "2048"
-    vb.cpus = 2
+    vb.memory = "4096"
+    vb.cpus = 4
   end
 
-  # Instala Docker dentro de la VM
-  config.vm.provision "docker"
+  # Instala Docker dentro de la VM y correr sonarqube
+  config.vm.provision "docker" do |d|
+    d.run "sonarqube",
+      image: "sonarqube:community",
+      args: "-p 9000:9000"
+  end
 
   # Instala dependencias para el GitHub Actions Runner
   config.vm.provision "shell",
