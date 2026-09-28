@@ -71,7 +71,7 @@ jobs:
           "
 
       - name: SonarQube Scan
-        uses: SonarSource/sonarqube-scan-action@
+        uses: SonarSource/sonarqube-scan-action@v6
         with:
           projectBaseDir: github/backend
         env:
